@@ -1,5 +1,6 @@
-#define MyJarPlugin "de.h-ab.ev3plugin_1.7.2.201605311139.jar"
+#define MyJarPlugin "de.h-ab.ev3plugin_1.7.2.201908011455.jar"
 #define MyGCCInstaller "arm-2009q1-203-arm-none-linux-gnueabi.exe"
+#define BuildDir "D:\build"
 ;#define TOOLCHAIN_INCLUDED
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -31,14 +32,14 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 [Files]
 ; Toolchain
 #ifdef TOOLCHAIN_INCLUDED
-Source: "D:\ev3\{#MyGCCInstaller}"; DestDir: "{app}"; AfterInstall: InstallToolchain
+Source: "{#BuildDir}\{#MyGCCInstaller}"; DestDir: "{app}"; AfterInstall: InstallToolchain
 #endif
 ; API
-Source: "D:\ev3\API\*"; DestDir: "{app}\API"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#BuildDir}\API\*"; DestDir: "{app}\API"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; Uploader
-Source: "D:\ev3\uploader\*"; DestDir: "{app}\uploader"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#BuildDir}\uploader\*"; DestDir: "{app}\uploader"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; Plugin
-Source: "D:\ev3\{#MyJarPlugin}"; DestDir: "{app}"; AfterInstall: InstallPlugin
+Source: "{#BuildDir}\{#MyJarPlugin}"; DestDir: "{app}"; AfterInstall: InstallPlugin
 [Code]
 var
   EclipseDirectory: String;
